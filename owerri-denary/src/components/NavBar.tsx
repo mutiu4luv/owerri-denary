@@ -8,10 +8,9 @@ import {
   List,
   ListItemButton,
   ListItemText,
-  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close"; // Added Close Icon
+import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/cyon-logo.jpeg";
@@ -21,105 +20,27 @@ const navItems = ["Home", "About", "Features", "Contact"];
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Defining a consistent green
-  const themeGreen = "#008000"; 
+  const brandGreen = "#0B6E4F";
+  const sharpYellow = "#FFD700";
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen((prev) => !prev);
   };
-
-  const drawer = (
-    <Box
-      sx={{
-        width: { xs: "100vw", sm: 350 },
-        height: "100%",
-        backgroundColor: themeGreen, // Solid green background
-        color: "white",
-        display: "flex",
-        flexDirection: "column",
-        pt: 2,
-      }}
-    >
-      {/* Close Button at the top right of Drawer */}
-      <Box sx={{ display: "flex", justifyContent: "flex-end", px: 2 }}>
-        <IconButton onClick={handleDrawerToggle} sx={{ color: "white" }}>
-          <CloseIcon fontSize="large" />
-        </IconButton>
-      </Box>
-
-      {/* Mobile Logo */}
-      <Box
-        component={Link}
-        to="/"
-        onClick={handleDrawerToggle}
-        sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}
-      >
-        <img
-          src={logo}
-          alt="Logo"
-          style={{ height: 60, borderRadius: '8px', border: '2px solid white' }}
-        />
-      </Box>
-
-      <List sx={{ width: "100%", textAlign: "center" }}>
-        {navItems.map((item) => (
-          <ListItemButton
-            key={item}
-            component={Link}
-            to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-            onClick={handleDrawerToggle}
-            sx={{
-              py: 2,
-              justifyContent: "center",
-              color: "white",
-              mx: 2,
-              my: 1,
-              borderRadius: '10px',
-              "&:hover": {
-                backgroundColor: "rgba(255,255,255,0.2)",
-              },
-            }}
-          >
-            <ListItemText
-              primary={
-                <Typography fontSize="1.4rem" fontWeight={700} sx={{ textTransform: 'uppercase' }}>
-                  {item}
-                </Typography>
-              }
-            />
-          </ListItemButton>
-        ))}
-      </List>
-    </Box>
-  );
 
   return (
     <>
+      {/* ================= NAVBAR ================= */}
       <AppBar
         position="fixed"
-        elevation={4}
         sx={{
-          // Use !important to override default MUI colors if they are conflicting
-          backgroundColor: `${themeGreen} !important`,
-          backgroundImage: "none !important", 
+          backgroundColor: "black",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           {/* Logo */}
-          <Box
-            component={Link}
-            to="/"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              textDecoration: "none",
-            }}
-          >
-            <img
-              src={logo}
-              alt="Logo"
-              style={{ height: 45, borderRadius: '4px' }}
-            />
+          <Box component={Link} to="/" sx={{ display: "flex" }}>
+            <img src={logo} alt="Logo" style={{ height: 45 }} />
           </Box>
 
           {/* Desktop Links */}
@@ -129,14 +50,15 @@ const Navbar = () => {
                 key={item}
                 component={Link}
                 to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                disableRipple
                 sx={{
-                  color: "white",
-                  ml: 3,
-                  fontWeight: 700,
-                  fontSize: "1.1rem",
-                  textTransform: "none",
+                  color: brandGreen,
+                  fontWeight: 600,
+                  ml: 2,
+                  transition: "all 0.2s ease",
                   "&:hover": {
-                    backgroundColor: "rgba(255,255,255,0.15)",
+                    backgroundColor: sharpYellow,
+                    color: "#000", 
                   },
                 }}
               >
@@ -145,34 +67,75 @@ const Navbar = () => {
             ))}
           </Box>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Hamburger */}
           <IconButton
-            color="inherit"
-            edge="end"
             onClick={handleDrawerToggle}
-            sx={{ display: { md: "none" } }}
+            sx={{
+              display: { xs: "flex", md: "none" },
+              color: brandGreen,
+            }}
           >
-            <MenuIcon fontSize="large" />
+            <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      {/* Spacer */}
+      {/* Proper spacing below fixed navbar */}
       <Toolbar />
 
-      {/* Drawer */}
+      {/* ================= MOBILE DRAWER ================= */}
       <Drawer
         anchor="right"
         open={mobileOpen}
-        onClose={handleDrawerToggle}
+        onClose={() => setMobileOpen(false)}
+        ModalProps={{
+          keepMounted: true,
+        }}
         PaperProps={{
-          sx: { 
-            backgroundColor: themeGreen,
-            width: { xs: "100%", sm: 350 }
-          }
+          sx: {
+            width: 280,
+            backgroundColor: "brandGreen",
+          },
         }}
       >
-        {drawer}
+        <Box sx={{ height: "100%" }}>
+          {/* Close Button */}
+          <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+            <IconButton
+              onClick={() => setMobileOpen(false)}
+              sx={{ color: brandGreen }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          {/* Drawer Links */}
+          <List>
+            {navItems.map((item) => (
+              <ListItemButton
+                key={item}
+                component={Link}
+                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                onClick={() => setMobileOpen(false)}
+                sx={{
+                  "&:hover": {
+                    backgroundColor: sharpYellow,
+                  },
+                }}
+              >
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{
+                    sx: {
+                      color: brandGreen,
+                      fontWeight: 600,
+                    },
+                  }}
+                />
+              </ListItemButton>
+            ))}
+          </List>
+        </Box>
       </Drawer>
     </>
   );
