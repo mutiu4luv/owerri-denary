@@ -8,7 +8,7 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import PaymentsIcon from "@mui/icons-material/Payments";
-import dark from "../assets/dark.jpg";
+import dark from "../assets/dark.jpeg";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import group from "../assets/group.jpeg";
