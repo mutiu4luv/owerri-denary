@@ -378,7 +378,7 @@ Catholic Youth Organization of Nigeria (CYON)           </Typography>
             maxWidth: 340,
             width: "100%",
             borderRadius: 3,
-            backgroundColor: "#3A1E0F",
+            backgroundColor: "green.200",
             boxShadow: 4,
             textAlign: "center",
             transition: "all 0.3s ease",
@@ -679,7 +679,7 @@ Catholic Youth Organization of Nigeria (CYON)           </Typography>
                   gap: 2,
                   p: 3,
                   borderRadius: 3,
-                  bgcolor: "#3A1E0F",
+                  bgcolor: "green.200",
                   boxShadow: 2,
                   transition: "all 0.3s ease",
                   "&:hover": {
