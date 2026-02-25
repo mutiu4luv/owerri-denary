@@ -1,0 +1,991 @@
+import { Box, Typography, Button, Stack, Divider } from "@mui/material";
+import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import StarIcon from "@mui/icons-material/Star";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import SecurityIcon from "@mui/icons-material/Security";
+import WaterDropIcon from "@mui/icons-material/WaterDrop";
+import FireExtinguisherIcon from "@mui/icons-material/FireExtinguisher";
+import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import GavelIcon from "@mui/icons-material/Gavel";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import dark from "../assets/dark.jpg";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import group from "../assets/group.jpeg";
+
+export default function Home() {
+  const navigate = useNavigate();
+
+  /* ================= STYLES ================= */
+
+  const sectionImageStyle = {
+    width: "100%",
+    height: { xs: 220, md: 400 },
+    objectFit: "cover" as const,
+    borderRadius: 3,
+    boxShadow: 3,
+    transition: "all 0.4s ease",
+    "&:hover": {
+      transform: "scale(1.03)",
+      boxShadow: 6,
+    },
+  };
+
+  const pageBackgroundStyle = {
+    backgroundImage: `url(${dark})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: { xs: "fixed", md: "fixed" } as const,
+  };
+
+  const contentWrapper = {
+    maxWidth: "1400px",
+    mx: "auto",
+    px: { xs: 2, md: 8 },
+  };
+
+  /* ================= ANIMATIONS ================= */
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.25 },
+    },
+  };
+
+  const imageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  const textVariant: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const imageFromLeftVariant: Variants = {
+    hidden: { opacity: 0, x: -120 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  const investmentContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const investmentItem: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const slideInVariant: Variants = {
+    hidden: (direction: "left" | "right") => ({
+      opacity: 0,
+      x: direction === "left" ? -60 : 60,
+    }),
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
+  /* ================= RETURN ================= */
+
+  return (
+    <Box
+      sx={{
+        ...pageBackgroundStyle,
+        width: "100%",
+        minHeight: "100vh",
+        overflowX: "hidden",
+      }}
+    >
+      {/* HERO SECTION */}
+      <Box
+        sx={{
+          px: { xs: 2, md: 8 },
+          py: { xs: 6, md: 8 },
+          textAlign: "center",
+        }}
+      >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* TITLE */}
+          <Typography
+            component="h1"
+            fontWeight="bold"
+            textAlign="center"
+            gutterBottom
+            sx={{
+              color: "#D4AF37",
+              textShadow: "0 0 16px rgba(212,175,55,0.45)",
+              letterSpacing: "1px",
+              fontSize: {
+                xs: "2.1rem",
+                sm: "2.6rem",
+                md: "3rem",
+              },
+            }}
+          >
+            Owerri Denary Cyon
+          </Typography>
+
+          <Typography
+            component="h2"
+            textAlign="center"
+            sx={{
+              color: "#F5F0EC",
+              letterSpacing: "0.5px",
+              fontSize: {
+                xs: "1.05rem",
+                sm: "1.2rem",
+                md: "1.35rem",
+              },
+              mb: 2,
+            }}
+          >
+            Ably Lead by Engr Nlemolisa Charlse
+          </Typography>
+
+          <Box
+            sx={{
+              width: 80,
+              height: 3,
+              bgcolor: "#D4AF37",
+              mx: "auto",
+              mb: 3,
+              borderRadius: 2,
+              boxShadow: "0 0 12px rgba(212,175,55,0.5)",
+            }}
+          />
+
+          {/* HERO IMAGE */}
+          <Box
+            component={motion.img}
+            variants={imageVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            src={group}
+            alt="Oba Shopping Complex"
+            sx={{
+              width: "100%",
+              height: { xs: 220, md: 400 },
+              objectFit: "cover",
+              borderRadius: 3,
+              boxShadow: 6,
+              mt: 5,
+            }}
+          />
+
+          {/* CTA BUTTONS */}
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            justifyContent="center"
+            sx={{ mt: 5 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.08, backgroundColor: "#da7127", color: "#fff" }}
+              whileTap={{ scale: 0.95 }}
+              style={{ display: 'inline-block' }}
+            >
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  fontWeight: "bold",
+                  borderColor: "#D4AF37",
+                  color: "#D4AF37",
+                }}
+                onClick={() => navigate("/contact")}
+              >
+                Contact Us
+              </Button>
+            </motion.div>
+          </Stack>
+        </motion.div>
+      </Box>
+
+      <Divider
+        sx={{
+          my: { xs: 4, md: 5 },
+          borderColor: "rgba(139, 69, 19, 0.15)",
+          maxWidth: "85%",
+          mx: "auto",
+        }}
+      />
+
+<Box px={{ xs: 2, md: 8 }} py={{ xs: 6, md: 8 }}>
+  <Typography
+    variant="h4"
+    textAlign="center"
+    fontWeight="bold"
+    sx={{
+      color: "#D4AF37",
+      textShadow: "0 0 14px rgba(212,175,55,0.35)",
+      mb: 1,
+      letterSpacing: 1,
+    }}
+  >
+    CYON Owerri Denary Activities
+  </Typography>
+
+  <Typography
+    textAlign="center"
+    sx={{ color: "#F5F0EC" }}
+    maxWidth="750px"
+    mx="auto"
+    mb={6}
+  >
+    The Catholic Youth Organization of Nigeria (CYON) Owerri Denary is
+    committed to spiritual growth, unity, leadership development, and
+    active parish participation across all parishes within the denary.
+  </Typography>
+
+  <Grid
+    container
+    spacing={4}
+    justifyContent="center"
+    component={motion.div}
+    variants={investmentContainer}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: false, amount: 0.3 }}
+  >
+    {[
+      {
+        icon: <AssignmentTurnedInIcon />,
+        title: "Monthly Denary Meetings",
+        desc:
+          "Our denary meetings are held every second Sunday of the month, bringing together youth from all parishes for unity and collaboration.",
+      },
+      {
+        icon: <GavelIcon />,
+        title: "Holy Mass Celebration",
+        desc:
+          "Each meeting begins with the Holy Mass, grounding all activities in prayer, worship, and spiritual reflection.",
+      },
+      {
+        icon: <TrendingUpIcon />,
+        title: "Rotational Hosting",
+        desc:
+          "Meetings rotate across parishes within Owerri Denary, encouraging fellowship and ensuring members visit and connect with every parish.",
+      },
+      {
+        icon: <VerifiedIcon />,
+        title: "Denary Youth Day",
+        desc:
+          "We celebrate our Denary Youth Day annually — a vibrant gathering focused on faith, empowerment, and youth engagement.",
+      },
+      {
+        icon: <MonetizationOnIcon />,
+        title: "Annual Denary Retreat",
+        desc:
+          "A spiritually enriching retreat held yearly to strengthen faith, leadership, and personal development among members.",
+      },
+      {
+        icon: <PaymentsIcon />,
+        title: "Dean’s Approval & Guidance",
+        desc:
+          "All major events and annual programs are officially scheduled and approved by the Dean of the Denary.",
+      },
+    ].map((item, index) => (
+      <Grid
+        size={{ xs: 12, md: 6, sm: 6 }}
+        key={index}
+        component={motion.div}
+        variants={investmentItem}
+        whileHover={{ y: -8, scale: 1.04 }}
+        transition={{ type: "spring", stiffness: 200 }}
+        display="flex"
+        justifyContent="center"
+      >
+        <Box
+          sx={{
+            p: 4,
+            maxWidth: 340,
+            width: "100%",
+            borderRadius: 3,
+            backgroundColor: "#3A1E0F",
+            boxShadow: 4,
+            textAlign: "center",
+            transition: "all 0.3s ease",
+          }}
+        >
+          <Box
+            sx={{
+              color: "#D4AF37",
+              fontSize: 42,
+              mb: 2,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {item.icon}
+          </Box>
+
+          <Typography
+            fontWeight="bold"
+            mb={1}
+            sx={{ color: "#D4AF37", fontSize: 16 }}
+          >
+            {item.title}
+          </Typography>
+
+          <Typography sx={{ color: "#F5F0EC", fontSize: 14 }}>
+            {item.desc}
+          </Typography>
+        </Box>
+      </Grid>
+    ))}
+  </Grid>
+</Box>
+
+      <Divider
+        sx={{
+          my: { xs: 4, md: 5 },
+          borderColor: "rgba(139, 69, 19, 0.15)",
+          maxWidth: "85%",
+          mx: "auto",
+        }}
+      />
+
+      {/* SECTION 1 – OVERVIEW */}
+      <Box sx={contentWrapper} py={{ xs: 4, md: 5 }}>
+        <Grid container spacing={4} justifyContent="center">
+          {/* TEXT CONTENT */}
+          <Grid
+            
+        size={{ xs: 12, }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              textAlign: "left",
+            }}
+          >
+            <motion.div
+              variants={textVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                gutterBottom
+                sx={{
+                  color: "#D4AF37",
+                  textShadow: "0 0 12px rgba(212, 175, 55, 0.35)",
+                  textAlign: "center",
+                }}
+              >
+                History of CYON Owerri Denary
+              </Typography>
+
+              <Typography sx={{ color: "#F5F0EC", fontSize: 15, mb: 2 }}>
+                The Catholic Youth Organization of Nigeria (CYON) Owerri Denary
+                was established to unite and empower youth across all parishes
+                in the Owerri Denary. From its early beginnings, the
+                organization has remained rooted in faith, service, leadership
+                development, and active participation in parish life.
+              </Typography>
+
+              <Typography sx={{ color: "#F5F0EC", fontSize: 15, mb: 2 }}>
+                The first President of CYON Owerri Denary was{" "}
+                <strong>Engr. Nlemolisa Charles</strong>, whose leadership laid
+                the foundation for structured youth engagement and collaboration
+                among parishes. Under his tenure, the organization grew in
+                membership and scope, focusing on spiritual growth and
+                fellowship.
+              </Typography>
+
+              <Typography sx={{ color: "#F5F0EC", fontSize: 15, mb: 2 }}>
+                The first Dean of CYON Owerri Denary was{" "}
+                <strong>Very Rev. Fr. Charlse Ikwuegbu</strong>, whose pastoral
+                guidance helped to shape the spiritual direction of the youth.
+                His support encouraged deepening of faith, stronger parish
+                identity, and a commitment to Christian values among the youth.
+              </Typography>
+
+              <Typography sx={{ color: "#F5F0EC", fontSize: 15, mb: 2 }}>
+                The first Chaplain of CYON Owerri Denary was{" "}
+                <strong>Fr. Bede Nwalozie</strong>, who provided spiritual care,
+                counsel, and sacramental support to members. His close
+                involvement fostered unity, prayerful reflection, and service to
+                community and parish needs.
+              </Typography>
+
+              <Typography sx={{ color: "#F5F0EC", fontSize: 15, mb: 2 }}>
+                Over the years, CYON Owerri Denary has continued to grow in both
+                spiritual maturity and community involvement, organizing
+                programs that strengthen leadership, deepen faith, and promote
+                service among the youth. Through monthly meetings, prayer
+                gatherings, mentorship, and outreach, the organization remains
+                committed to forming young Catholics who are spiritually
+                grounded and socially responsible.
+              </Typography>
+
+              <Typography sx={{ color: "#F5F0EC", fontSize: 15 }}>
+                Today, CYON Owerri Denary stands as a vibrant and dynamic youth
+                body, united in faith, enriched by fellowship, and inspired to
+                serve both Church and society.
+              </Typography>
+            </motion.div>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Divider
+        sx={{
+          my: { xs: 4, md: 5 },
+          borderColor: "rgba(139, 69, 19, 0.15)",
+          maxWidth: "85%",
+          mx: "auto",
+        }}
+      />
+
+      {/* SECTION 2 – SECURITY & ACCESS */}
+      <Box sx={contentWrapper} py={{ xs: 4, md: 5 }}>
+        <Grid container spacing={4} justifyContent="center" alignItems="center">
+          <Grid
+            
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <motion.div
+              variants={imageFromLeftVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              style={{ width: "100%" }}
+            >
+              <Box
+                component="img"
+                src="/Images/shop4.jpeg"
+                alt="Security"
+                sx={sectionImageStyle}
+              />
+            </motion.div>
+          </Grid>
+          <Grid
+          size={{ xs: 12, md: 6 }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <motion.div
+              variants={textVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                gutterBottom
+                sx={{
+                  color: "#D4AF37",
+                  textShadow: "0 0 12px rgba(212, 175, 55, 0.35)",
+                  textAlign: "center",
+                }}
+              >
+                Security, Comfort & Accessibility
+              </Typography>
+              <Typography sx={{ color: "#F5F0EC" }}>
+                Each shop is thoughtfully constructed with{" "}
+                <strong>personal toilets</strong>, ensuring hygiene and comfort
+                for traders and visitors alike.
+                <br />
+                <br />
+                The complex operates with{" "}
+                <strong>24-hour professional security services</strong>,
+                supported by well-lit corridors, patrol teams, and surveillance
+                systems.
+                <br />
+                <br />
+                Well-planned entry and exit points, along with ample parking
+                space, ensure smooth traffic flow for motorists and pedestrians.
+              </Typography>
+            </motion.div>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Divider
+        sx={{
+          my: { xs: 4, md: 5 },
+          borderColor: "rgba(139, 69, 19, 0.15)",
+          maxWidth: "85%",
+          mx: "auto",
+        }}
+      />
+
+      {/* SECTION 3 – AMENITIES */}
+      <Box px={{ xs: 2, md: 8 }} py={{ xs: 4, md: 5 }} justifyContent="center">
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          gutterBottom
+          textAlign="center"
+          sx={{
+            color: "#D4AF37",
+            textShadow: "0 0 12px rgba(212, 175, 55, 0.35)",
+          }}
+        >
+          World-Class Amenities
+        </Typography>
+
+        <Typography
+          textAlign="center"
+          sx={{ color: "#F5F0EC" }}
+          maxWidth="700px"
+          mx="auto"
+          mb={4}
+        >
+          Every detail has been carefully planned to ensure safety, comfort,
+          efficiency, and a pleasant trading experience.
+        </Typography>
+
+        <Grid container spacing={4} alignItems="center">
+          {/* ICON FEATURES */}
+          <Grid  size={{ xs: 12, md: 6 }}>
+            <Grid container spacing={3}>
+              {[
+                {
+                  icon: <DirectionsWalkIcon />,
+                  title: "Wide Walkways",
+                  desc: "Spacious paved walkways for easy and safe movement",
+                },
+                {
+                  icon: <SecurityIcon />,
+                  title: "24/7 Security",
+                  desc: "Professional surveillance and patrol services",
+                },
+                {
+                  icon: <FireExtinguisherIcon />,
+                  title: "Fire Safety Systems",
+                  desc: "Installed fire alarms and emergency exits",
+                },
+                {
+                  icon: <WaterDropIcon />,
+                  title: "Clean Water Supply",
+                  desc: "Reliable water access for sanitation and hygiene",
+                },
+                {
+                  icon: <LocalParkingIcon />,
+                  title: "Ample Parking",
+                  desc: "Well-organized parking for traders and visitors",
+                },
+                {
+                  icon: <LocalShippingIcon />,
+                  title: "Loading Zones",
+                  desc: "Designated areas for smooth loading & offloading",
+                },
+              ].map((item, index) => (
+                <Grid
+                  size={{ xs: 12, md: 6, sm: 6 }}
+                  key={index}
+                >
+                  <motion.div
+                    custom={index % 2 === 0 ? "left" : "right"}
+                    variants={slideInVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        gap: 2,
+                        p: 3,
+                        borderRadius: 3,
+                        bgcolor: "#fff8f2",
+                        boxShadow: 2,
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-5px)",
+                          boxShadow: 6,
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          color: "#8B4513",
+                          fontSize: 36,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        {item.icon}
+                      </Box>
+
+                      <Box>
+                        <Typography fontWeight="bold" color="#5C2D0C">
+                          {item.title}
+                        </Typography>
+                        <Typography sx={{ color: "#5C2D0C" }} fontSize={14}>
+                          {item.desc}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+
+          {/* IMAGE */}
+          <Grid  size={{ xs: 12, md: 6 }}>
+            <Box
+              component="img"
+              src="/Images/shop3.jpeg"
+              alt="Amenities"
+              sx={{
+                width: "100%",
+                borderRadius: 3,
+                objectFit: "cover",
+                boxShadow: 2,
+                transition: "all 0.4s ease",
+                "&:hover": {
+                  transform: "scale(1.03)",
+                  boxShadow: 6,
+                },
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Divider
+        sx={{
+          my: { xs: 4, md: 5 },
+          borderColor: "rgba(139, 69, 19, 0.15)",
+          maxWidth: "85%",
+          mx: "auto",
+        }}
+      />
+
+      {/* SECTION 4 – CONCLUSION */}
+      <Box textAlign="center" px={{ xs: 2, md: 8 }} py={{ xs: 4, md: 5 }}>
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          gutterBottom
+          sx={{
+            color: "#D4AF37",
+            textShadow: "0 0 12px rgba(212, 175, 55, 0.35)",
+          }}
+        >
+          A Vibrant Commercial Hub
+        </Typography>
+        <Typography sx={{ color: "#F5F0EC" }} maxWidth="900px" mx="auto">
+          This development is more than a cluster of shops—it is a vibrant
+          commercial hub that reflects visionary planning, quality construction,
+          and a strong commitment to economic growth.
+          <br />
+          <br />
+          With its blend of convenience, modern facilities, and strategic
+          location, the Oba International Market Shopping Complex is set to
+          become the preferred destination for traders, shoppers, and investors
+          across the region.
+        </Typography>
+      </Box>
+
+      {/* FINAL CTA & PRICE TIERS */}
+      <Box px={{ xs: 2, md: 8 }} py={{ xs: 5, md: 6 }}>
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          gutterBottom
+          textAlign="center"
+          sx={{
+            color: "#D4AF37",
+            textShadow: "0 0 12px rgba(212, 175, 55, 0.35)",
+          }}
+        >
+          Ready to Own a Shop at Oba International Market?
+        </Typography>
+        <Typography sx={{ color: "#F5F0EC" }} textAlign="center" mb={6}>
+          Secure your space in one of Anambra State’s most modern commercial
+          hubs.
+        </Typography>
+
+        {/* PRICE TIERS */}
+        <Box sx={{ mt: 10 }}>
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            textAlign="center"
+            sx={{
+              color: "#D4AF37",
+              textShadow: "0 0 12px rgba(212, 175, 55, 0.35)",
+            }}
+          >
+            Shop Categories & Pricing
+          </Typography>
+
+          <Typography
+            textAlign="center"
+            sx={{ color: "#F5F0EC" }}
+            mb={6}
+          >
+            Choose a shop size that fits your business goals
+          </Typography>
+
+          <Grid
+            container
+            spacing={4}
+            justifyContent="center"
+            alignItems="stretch"
+          >
+            {/* STANDARD SHOP */}
+            <Grid
+              size={{ xs: 12, md: 6 }}
+            
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              <Box
+                sx={{
+                  p: 4,
+                  borderRadius: 3,
+                  boxShadow: 3,
+                  textAlign: "center",
+                  width: "100%",
+                  maxWidth: 320,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  backgroundColor: "#3A1E0F",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    boxShadow: 8,
+                  },
+                }}
+              >
+                <StorefrontIcon sx={{ fontSize: 50, color: "#D4AF37" }} />
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  mt={2}
+                  sx={{ color: "#D4AF37" }}
+                >
+                  Standard Shop
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }} mt={1}>
+                  Ideal for small-scale retail businesses
+                </Typography>
+                <Typography variant="h4" fontWeight="bold" mt={3}>
+                  ₦3.5M
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }}>
+                  One-time payment
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }} mt={1}>
+                  Or ₦1.2M x 3 installments
+                </Typography>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    mt: 4,
+                    bgcolor: "#D4AF37",
+                    "&:hover": { bgcolor: "#5C2D0C" },
+                  }}
+                  onClick={() => navigate("/contact")}
+                >
+                  Buy Standard Shop
+                </Button>
+              </Box>
+            </Grid>
+
+            {/* PREMIUM SHOP */}
+            <Grid
+              size={{ xs: 12, md: 6, sm: 6 }}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              <Box
+                sx={{
+                  p: 4,
+                  borderRadius: 3,
+                  boxShadow: 6,
+                  textAlign: "center",
+                  width: "100%",
+                  maxWidth: 320,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  border: "2px solid #D4AF37",
+                  position: "relative",
+                  backgroundColor: "#3A1E0F",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    boxShadow: 8,
+                  },
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: -14,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    bgcolor: "#D4AF37",
+                    color: "white",
+                    px: 3,
+                    py: 0.5,
+                    borderRadius: 5,
+                    fontSize: 12,
+                    fontWeight: "bold",
+                  }}
+                >
+                  MOST POPULAR
+                </Box>
+
+                <StarIcon sx={{ fontSize: 50, color: "#D4AF37" }} />
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  mt={2}
+                  sx={{ color: "#D4AF37" }}
+                >
+                  Premium Shop
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }} mt={1}>
+                  High visibility & heavy foot traffic
+                </Typography>
+                <Typography variant="h4" fontWeight="bold" mt={3}>
+                  ₦5.5M
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }}>
+                  One-time payment
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }} mt={1}>
+                  Or ₦2M x 3 installments
+                </Typography>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    mt: 4,
+                    bgcolor: "#D4AF37",
+                    "&:hover": { bgcolor: "#5C2D0C" },
+                  }}
+                  onClick={() => navigate("/contact")}
+                >
+                  Buy Premium Shop
+                </Button>
+              </Box>
+            </Grid>
+
+            {/* EXECUTIVE SHOP */}
+            <Grid
+              
+                    size={{ xs: 12, md: 4, sm: 6 }}
+
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              <Box
+                sx={{
+                  p: 4,
+                  borderRadius: 3,
+                  boxShadow: 3,
+                  textAlign: "center",
+                  width: "100%",
+                  maxWidth: 320,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  backgroundColor: "#3A1E0F",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    boxShadow: 8,
+                  },
+                }}
+              >
+                <BusinessCenterIcon
+                  sx={{ fontSize: 50, color: "#D4AF37" }}
+                />
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  mt={2}
+                  sx={{ color: "#D4AF37" }}
+                >
+                  Executive Shop
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }} mt={1}>
+                  Corner shops & flagship locations
+                </Typography>
+                <Typography variant="h4" fontWeight="bold" mt={3}>
+                  ₦8M
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }}>
+                  One-time payment
+                </Typography>
+                <Typography sx={{ color: "#F5F0EC" }} mt={1}>
+                  Or ₦3M x 3 installments
+                </Typography>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    mt: 4,
+                    bgcolor: "#D4AF37",
+                    "&:hover": { bgcolor: "#5C2D0C" },
+                  }}
+                  onClick={() => navigate("/contact")}
+                >
+                  Buy Executive Shop
+                </Button>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
