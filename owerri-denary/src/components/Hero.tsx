@@ -142,6 +142,44 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
+ <Typography
+            component="h1"
+            fontWeight="small-caps"
+            textAlign="center"
+            gutterBottom
+            sx={{
+              color: "#D4AF37",
+              textShadow: "0 0 16px rgba(212,175,55,0.45)",
+              letterSpacing: "1px",
+              fontSize: {
+                xs: "2.1rem",
+                sm: "2.6rem",
+                md: "3rem",
+              },
+            }}
+          >
+            Catholic Archdiocese Of Owerri
+          </Typography>
+
+
+          <Typography
+            component="h1"
+            fontWeight="medium-caps"
+            textAlign="center"
+            gutterBottom
+            sx={{
+              color: "#D4AF37",
+              textShadow: "0 0 16px rgba(212,175,55,0.45)",
+              letterSpacing: "1px",
+              fontSize: {
+                xs: "2.1rem",
+                sm: "2.6rem",
+                md: "3rem",
+              },
+            }}
+          >
+Catholic Youth Organization of Nigeria (CYON)           </Typography>
+
           {/* TITLE */}
           <Typography
             component="h1"
@@ -162,7 +200,7 @@ export default function Home() {
             Owerri Denary Cyon
           </Typography>
 
-          <Typography
+          {/* <Typography
             component="h2"
             textAlign="center"
             sx={{
@@ -177,7 +215,7 @@ export default function Home() {
             }}
           >
             Ably Lead by Engr Nlemolisa Charlse
-          </Typography>
+          </Typography> */}
 
           <Box
             sx={{
