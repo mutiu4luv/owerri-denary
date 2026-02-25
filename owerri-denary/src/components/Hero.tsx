@@ -1,15 +1,7 @@
 import { Box, Typography, Button, Stack, Divider } from "@mui/material";
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import StorefrontIcon from "@mui/icons-material/Storefront";
-import StarIcon from "@mui/icons-material/Star";
-import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-import LocalParkingIcon from "@mui/icons-material/LocalParking";
-import SecurityIcon from "@mui/icons-material/Security";
-import WaterDropIcon from "@mui/icons-material/WaterDrop";
-import FireExtinguisherIcon from "@mui/icons-material/FireExtinguisher";
-import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+
 import VerifiedIcon from "@mui/icons-material/Verified";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import GavelIcon from "@mui/icons-material/Gavel";
